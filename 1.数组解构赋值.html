@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- 
+    解构赋值:
+      按照一定模式, 从数组和对象中提取值, 然后给变量赋值 
+      本质:
+        赋值(将数组或对象的结构解散, 然后赋值 匹配模式)
+      注意:
+        声明的变量结构 和 后面的数组/对象的结构要一致
+
+   -->
+  <script>
+    // 数组的解构赋值
+    let arr = [1, 2, 3]
+    let [a, b, c] = arr;
+    console.log(a); //1
+    console.log(a, b, c); //1,2,3
+    console.log("---------------------------");
+    // 数组的解构赋值 (设置默认值)
+    /* 
+      设置默认值:
+        声明变量时, 给变量进行先赋值 = 
+     */
+    let [d = 6, e = 5] = arr;
+    console.log(d, e); //1,2
+    console.log("---------------------------");
+    let arr1 = [1]
+    let [f = 6, g = 0] = arr1;
+    // g没有被赋值, 则使用默认值0
+    console.log(f, g); //1,0
+    console.log("---------------------------");
+
+
+    // []中没有元素, 则表示没有值可以去赋值, 则使用默认值
+    let [h = 1, i = h] = []
+    console.log(h, i); //1,1
+    console.log("---------------------------");
+
+    /* 
+      ...rest: 表示使用rest变量接收剩余的值
+    */
+    let [a1, b1, ...rest] = [10, 11, 23, 22, 12, 3, 4, 5, 3];
+    console.log(a1, b1, rest); //10,11,[23, 22, 12, 3, 4, 5, 3]
+    console.log("---------------------------");
+
+    /* 
+      注意: 结构多维数组, 只要结构匹配上, 都可以解构赋值
+    */
+    let [a2, [b2, c2, d2], e2] = [1, [2, 3, 4], 5]
+    console.log(a2, b2, c2, d2, e2); //1,2,3,4,5
+    console.log("---------------------------");
+
+    /* 
+      1.=号右边的[]中没有元素, 则不会进行赋值
+      2.=号左边设置了默认值, 因为是从左到右执行, foo=hoo, 此时的hoo还没有声明, 会报错
+    */
+    // let [foo = hoo, hoo = 2] = []; //Cannot access 'hoo' before initialization
+    // console.log(foo, hoo);  
+    // 修改后 =>
+    let [hoo = 2, foo = hoo] = []; 
+    console.log(foo, hoo);  // 2,2
+    console.log("---------------------------");
+
+  </script>
+</body>
+
+</html>

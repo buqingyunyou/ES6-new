@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    /* 
+      使用数组解构赋值的方式, 交换两个变量的值
+    */
+    let a = 1;
+    let b = 2;
+    /* 
+      第一步: 先执行=后面的[b,a], 即相当于将创建了一个数组[2,1]
+      第二步: 再将[2,1]给左边进行解构赋值
+    */
+    [a, b] = [b, a]
+    console.log(a, b); //2,1
+  </script>
+</body>
+
+</html>
